@@ -11,7 +11,8 @@ idleTime = 0
 
 def shopper(env, id):
     arrive = env.now
-    items = random.randint(5, 20)
+    items = random.choice([5, 5, 10, 10, 10, 15, 15, 15, 20, 20, 50])
+    
     shoppingTime = items // 2 # shopping takes 1/2 a minute per item.
     yield env.timeout(shoppingTime)
     # join the queue of waiting shoppers
@@ -34,9 +35,10 @@ def checker(env):
 def customerArrival(env):
     customerNumber = 0
     while True:
+        nextShopper = random.randint(0, 3)
         customerNumber += 1
         env.process(shopper(env, customerNumber))
-        yield env.timeout(2) #New shopper every two minutes
+        yield env.timeout(nextShopper) #New shopper every two minutes
 
 def processResults():
     totalWait = 0
@@ -53,8 +55,7 @@ def processResults():
     print("The total idle time was %d minutes" % idleTime)
 
 def main():
-    numberCheckers = 5
-
+    numberCheckers = 1
     env = simpy.Environment()
 
     env.process(customerArrival(env))

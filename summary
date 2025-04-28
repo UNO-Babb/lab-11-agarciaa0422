@@ -1,0 +1,5 @@
+I adjusted the simulation to get shoppers to arrive at a random times and get a certain amount of shopping done.
+I saw that when there was too many shoppers, there would be a long wait time however, when there were fewer shoppers, there would be some idle time spent from the cashiers. 
+This had helped me understand the timing and flow of customers affect onto how well a checkline can work. 
+It was really cool to see how the function of the choice instead of the randint was making this feel like it was unpredictable not knowing when something would happen just like a store would have it happen.
+It was also cool to see that when I run the code, there are different wait times and idle times making this feel like we can never know what will happen and how long it will take. 
